@@ -98,6 +98,14 @@
   .addon-price { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
   .addon-item p { font-size: 0.85rem; color: var(--gray); line-height: 1.5; }
 
+.price-strike {
+    font-size: 1.5rem;
+    color: #9ca3af; /* Lighter gray so it recedes into the background */
+    text-decoration: line-through;
+    margin-right: 0.5rem;
+    font-weight: 400;
+  }
+ 
   /* TESTIMONIALS CAROUSEL */
   #testimonials { background: var(--black); color: var(--white); overflow: hidden; padding: 7rem 0; position: relative; }
   #testimonials h2 { text-align: center; color: var(--white); margin-bottom: 1rem; }
@@ -277,7 +285,7 @@
         <div class="popular-badge">Most Popular</div>
         <h3>Growth</h3>
         <p class="service-desc">Built to rank on Google and convert visitors into paying customers.</p>
-        <div class="service-price">$469 <span>one-time</span></div>
+        <div class="service-price"><span class="price-strike">$569</span>$469 <span>one-time</span></div>
         <ul class="feature-list">
           <li><strong>Everything in Starter, plus:</strong></li>
           <li>Expanded Site (Up to 6 Pages)</li>
