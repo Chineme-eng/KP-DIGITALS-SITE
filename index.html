@@ -106,19 +106,32 @@
     font-weight: 400;
   }
  
-  /* TESTIMONIALS CAROUSEL */
+ /* TESTIMONIALS CAROUSEL */
   #testimonials { background: var(--black); color: var(--white); overflow: hidden; padding: 7rem 0; position: relative; }
   #testimonials h2 { text-align: center; color: var(--white); margin-bottom: 1rem; }
   #testimonials .section-sub { text-align: center; margin: 0 auto 4rem auto; color: rgba(255,255,255,0.6); }
-  .carousel-wrapper { width: 100%; overflow: hidden; white-space: nowrap; position: relative; }
+  
+  .carousel-wrapper { width: 100%; overflow: hidden; position: relative; }
   .carousel-wrapper::before, .carousel-wrapper::after { content: ''; position: absolute; top: 0; width: 150px; height: 100%; z-index: 2; pointer-events: none; }
   .carousel-wrapper::before { left: 0; background: linear-gradient(to right, var(--black) 0%, transparent 100%); }
   .carousel-wrapper::after { right: 0; background: linear-gradient(to left, var(--black) 0%, transparent 100%); }
   
-  .carousel-track { display: inline-block; animation: scroll 45s linear infinite; }
+  .carousel-track { 
+    display: flex; 
+    width: max-content; /* This ensures the math for -50% is mathematically perfect */
+    animation: scroll 50s linear infinite; 
+  }
   .carousel-track:hover { animation-play-state: paused; }
   
-  .testimonial-card { display: inline-block; white-space: normal; vertical-align: top; width: 380px; background: #181816; padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); margin: 0 1rem; }
+  .testimonial-card { 
+    flex-shrink: 0; /* Prevents cards from squishing */
+    width: 380px; 
+    background: #181816; 
+    padding: 2.5rem; 
+    border-radius: 20px; 
+    border: 1px solid rgba(255,255,255,0.08); 
+    margin: 0 1rem; 
+  }
   .testimonial-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
   .client-avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.1); }
   .client-info { display: flex; flex-direction: column; }
@@ -410,6 +423,42 @@
 
       <div class="testimonial-card">
         <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="Marcus J." class="client-avatar">
+          <div class="client-info">
+            <div class="stars">★★★★★</div>
+            <div class="client-name">Marcus J.</div>
+            <div class="client-biz">Vintage Clothier</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"I needed a website that captured the vibe of my Brooklyn boutique without costing a fortune. KP Digital nailed the aesthetic and had it live before my summer sale. The whole process was completely seamless."</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Frank C." class="client-avatar">
+          <div class="client-info">
+            <div class="stars">★★★★★</div>
+            <div class="client-name">Frank C.</div>
+            <div class="client-biz">Licensed Electrician</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"I've relied strictly on word-of-mouth for 20 years. KP Digital built me a site that finally gets me consistent calls directly from Google. Worth every penny, especially since they didn't try to upsell me on things I didn't need."</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=100&q=80" alt="Dr. Anita P." class="client-avatar">
+          <div class="client-info">
+            <div class="stars">★★★★★</div>
+            <div class="client-name">Dr. Anita P.</div>
+            <div class="client-biz">Family Dentistry</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"Our old site was a mess for patients to navigate. KP Digital redesigned the entire experience to be clean, modern, and mobile-friendly. We've seen a massive drop in calls just asking for directions or booking links."</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
           <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80" alt="Marco T." class="client-avatar">
           <div class="client-info">
             <div class="stars">★★★★★</div>
@@ -458,6 +507,18 @@
 
       <div class="testimonial-card">
         <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="James K." class="client-avatar">
+          <div class="client-info">
+            <div class="stars">★★★★★</div>
+            <div class="client-name">James K.</div>
+            <div class="client-biz">Accounting Firm</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"Finally, a web developer who actually answers the phone and speaks plain English. No jargon, just results. Highly recommended for any Queens business."</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
           <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="Marcus J." class="client-avatar">
           <div class="client-info">
             <div class="stars">★★★★★</div>
@@ -490,18 +551,6 @@
           </div>
         </div>
         <p class="testimonial-text">"Our old site was a mess for patients to navigate. KP Digital redesigned the entire experience to be clean, modern, and mobile-friendly. We've seen a massive drop in calls just asking for directions or booking links."</p>
-      </div>
-     
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="James K." class="client-avatar">
-          <div class="client-info">
-            <div class="stars">★★★★★</div>
-            <div class="client-name">James K.</div>
-            <div class="client-biz">Accounting Firm</div>
-          </div>
-        </div>
-        <p class="testimonial-text">"Finally, a web developer who actually answers the phone and speaks plain English. No jargon, just results. Highly recommended for any Queens business."</p>
       </div>
     </div>
   </div>
