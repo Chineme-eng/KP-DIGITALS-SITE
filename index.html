@@ -24,8 +24,11 @@
     html { scroll-behavior: smooth; }
     body { background: var(--white); color: var(--black); font-family: var(--sans); font-weight: 300; overflow-x: hidden; line-height: 1.6; }
 
+    /* URGENCY BANNER */
+    .top-banner { background: var(--black); color: var(--white); text-align: center; padding: 0.5rem; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; }
+
     /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; z-index: 100; background: rgba(250, 250, 248, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+    nav { position: sticky; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; padding: 1rem 3rem; z-index: 100; background: rgba(250, 250, 248, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
     .nav-logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: var(--black); text-decoration: none; }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
@@ -40,7 +43,7 @@
     .section-sub { font-size: 1.1rem; color: var(--gray); max-width: 600px; margin: 0 auto 4rem; text-align: center; }
 
     /* HERO */
-    .hero { min-height: 90vh; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding-top: 10rem; }
+    .hero { min-height: 85vh; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding-top: 6rem; }
     .hero-content h1 { font-family: var(--serif); font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; }
     .hero-content h1 em { font-style: italic; color: var(--accent); }
     .hero-content p { font-size: 1.15rem; color: var(--gray); margin-bottom: 2.5rem; max-width: 480px; }
@@ -52,7 +55,7 @@
     .hero-img { width: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); overflow: hidden; }
     .hero-img img { width: 100%; display: block; object-fit: cover; }
 
-    /* PORTFOLIO (Real Sites) */
+    /* PORTFOLIO */
     .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
     .portfolio-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; transition: transform 0.3s, box-shadow 0.3s; display: block; }
     .portfolio-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.06); }
@@ -63,10 +66,31 @@
     .portfolio-info h3 { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 0.3rem; }
     .portfolio-info p { font-size: 0.9rem; color: var(--gray); font-weight: 400; }
 
-    /* REVIEWS (Realistic Testimonials) */
-    #reviews { background: var(--light); border-radius: 24px; padding: 6rem 3rem; margin: 2rem auto; }
-    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .review-card { background: var(--white); padding: 2rem; border-radius: 12px; border: 1px solid var(--border); }
+    /* HOW IT WORKS */
+    #process { background: var(--light); border-radius: 24px; padding: 6rem 3rem; margin: 2rem auto; }
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; position: relative; }
+    .step { padding: 2rem; background: var(--white); border-radius: 16px; border: 1px solid var(--border); transition: transform 0.2s; }
+    .step:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .step-num { font-family: var(--serif); font-size: 3rem; font-weight: 300; color: var(--accent-light); line-height: 1; margin-bottom: 1rem; }
+    .step h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .step p { font-size: 0.95rem; color: var(--gray); }
+
+    /* REVIEWS CAROUSEL */
+    #reviews { overflow: hidden; padding: 6rem 0; }
+    .carousel-container { width: 100%; overflow: hidden; position: relative; padding: 1rem 0; }
+    .carousel-container::before, .carousel-container::after { content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none; }
+    .carousel-container::before { left: 0; background: linear-gradient(to right, var(--white), transparent); }
+    .carousel-container::after { right: 0; background: linear-gradient(to left, var(--white), transparent); }
+    
+    .carousel-track { display: flex; gap: 2rem; width: max-content; animation: scroll 30s linear infinite; }
+    .carousel-track:hover { animation-play-state: paused; }
+    
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-50% - 1rem)); } /* Scrolls exactly half, then seamlessly loops */
+    }
+
+    .review-card { background: var(--light); padding: 2rem; border-radius: 12px; border: 1px solid var(--border); width: 350px; flex-shrink: 0; white-space: normal; }
     .review-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
     .review-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
     .review-name { font-weight: 600; font-size: 1rem; }
@@ -91,6 +115,15 @@
     .pricing-card.popular .plan-btn { background: var(--accent); border-color: var(--accent); color: var(--white); }
     .plan-btn:hover { background: var(--black); color: var(--white); }
     .pricing-card.popular .plan-btn:hover { background: var(--accent-mid); }
+    .guarantee { text-align: center; margin-top: 3rem; font-size: 0.95rem; color: var(--gray); display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+
+    /* FAQ */
+    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+    .faq-item { border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; cursor: pointer; transition: background 0.2s; }
+    .faq-item:hover { background: var(--light); }
+    .faq-q { display: flex; justify-content: space-between; font-weight: 500; }
+    .faq-a { display: none; margin-top: 1rem; color: var(--gray); font-size: 0.95rem; }
+    .faq-item.open .faq-a { display: block; }
 
     /* CONTACT */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
@@ -124,10 +157,15 @@
 </head>
 <body>
 
+<div class="top-banner">
+  ✨ Currently accepting 3 new clients for website builds this month.
+</div>
+
 <nav>
   <a href="#" class="nav-logo">KP<span>.</span>Digital</a>
   <ul class="nav-links">
     <li><a href="#work">Our Work</a></li>
+    <li><a href="#process">Process</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#pricing">Pricing</a></li>
   </ul>
@@ -179,45 +217,173 @@
         <p>Contractor • Lead Generation</p>
       </div>
     </a>
+    <a href="#contact" class="portfolio-card">
+      <div class="portfolio-img-wrap">
+        <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+      </div>
+      <div class="portfolio-info">
+        <h3>Queens Dental Care</h3>
+        <p>Healthcare • Patient Portal Integration</p>
+      </div>
+    </a>
+    <a href="#contact" class="portfolio-card">
+      <div class="portfolio-img-wrap">
+        <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+      </div>
+      <div class="portfolio-info">
+        <h3>Metro Cleaners</h3>
+        <p>Local Service • Quote Calculator</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="process">
+  <h2 class="section-title">How we work</h2>
+  <p class="section-sub">Four simple steps to a website that prints money. You run your business; we'll handle the internet.</p>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Discovery Call</h3>
+      <p>A quick 15-minute chat to learn about your business, your ideal customers, and your goals.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Design & Build</h3>
+      <p>We hit the lab. Within 4-5 days, we'll send you a private link to review the first draft.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Review & Refine</h3>
+      <p>We don't launch until you love it. You get unlimited revisions included in all our tiers.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3>Launch & Grow</h3>
+      <p>We connect your domain, configure your SEO, push the site live, and hand over the keys.</p>
+    </div>
   </div>
 </section>
 
 <section id="reviews">
-  <h2 class="section-title">What Our Clients Say</h2>
-  <p class="section-sub">Real results from local business owners.</p>
-  <div class="reviews-grid">
-    <div class="review-card">
-      <div class="review-header">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Marcus" class="review-avatar">
-        <div>
-          <div class="review-name">Marcus T.</div>
-          <div class="review-biz">Astoria Pipe Pros</div>
+  <h2 class="section-title" style="padding: 0 3rem;">What Our Clients Say</h2>
+  <p class="section-sub" style="padding: 0 3rem;">Real results from local business owners.</p>
+  
+  <div class="carousel-container">
+    <div class="carousel-track">
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Marcus" class="review-avatar">
+          <div><div class="review-name">Marcus T.</div><div class="review-biz">Astoria Pipe Pros</div></div>
         </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"KP Digital completely rebuilt our site. We doubled our inbound calls within a month. Fast, professional, and exactly what we needed to look credible online."</p>
       </div>
-      <div class="stars">★★★★★</div>
-      <p class="review-text">"KP Digital completely rebuilt our site. We doubled our inbound calls within a month. Fast, professional, and exactly what we needed to look credible online."</p>
-    </div>
-    <div class="review-card">
-      <div class="review-header">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Sarah" class="review-avatar">
-        <div>
-          <div class="review-name">Sarah V.</div>
-          <div class="review-biz">Lumina Spa</div>
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Sarah" class="review-avatar">
+          <div><div class="review-name">Sarah V.</div><div class="review-biz">Lumina Spa</div></div>
         </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"I couldn't afford a $5,000 agency. KP gave me a beautiful, mobile-friendly website with online booking for a fraction of the cost. Highly recommend!"</p>
       </div>
-      <div class="stars">★★★★★</div>
-      <p class="review-text">"I couldn't afford a $5,000 agency. KP gave me a beautiful, mobile-friendly website with online booking for a fraction of the cost. Highly recommend!"</p>
-    </div>
-    <div class="review-card">
-      <div class="review-header">
-        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="David" class="review-avatar">
-        <div>
-          <div class="review-name">David R.</div>
-          <div class="review-biz">El Camino Queens</div>
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="David" class="review-avatar">
+          <div><div class="review-name">David R.</div><div class="review-biz">El Camino Queens</div></div>
         </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"The best part is I didn't have to deal with the tech stuff. I sent over some photos, and they handled everything else perfectly in under a week."</p>
       </div>
-      <div class="stars">★★★★★</div>
-      <p class="review-text">"The best part is I didn't have to deal with the tech stuff. I sent over some photos, and they handled everything else perfectly in under a week."</p>
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Kevin" class="review-avatar">
+          <div><div class="review-name">Kevin M.</div><div class="review-biz">KM Real Estate</div></div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Our old site was embarrassing to send to clients. The new site looks like a million bucks and we are already ranking higher for local searches."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Maria" class="review-avatar">
+          <div><div class="review-name">Maria L.</div><div class="review-biz">Sweet Bites Bakery</div></div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"They added an online ordering form that has completely streamlined our mornings. The investment paid for itself in literally two weeks."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="John" class="review-avatar">
+          <div><div class="review-name">John C.</div><div class="review-biz">City Electricians</div></div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"No BS, just good work. They didn't try to upsell me on stuff I didn't need. The site is fast and the floating call button gets my phone ringing daily."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Lisa" class="review-avatar">
+          <div><div class="review-name">Lisa K.</div><div class="review-biz">Brooklyn Fit Studio</div></div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"The integration with our class booking software was seamless. KP Digital was super responsive and made the whole process completely stress-free."</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Marcus" class="review-avatar">
+          <div><div class="review-name">Marcus T.</div><div class="review-biz">Astoria Pipe Pros</div></div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"KP Digital completely rebuilt our site. We doubled our inbound calls within a month. Fast, professional, and exactly what we needed to look credible online."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Sarah" class="review-avatar">
+          <div><div class="review-name">Sarah V.</div><div class="review-biz">Lumina Spa</div></div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"I couldn't afford a $5,000 agency. KP gave me a beautiful, mobile-friendly website with online booking for a fraction of the cost. Highly recommend!"</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="David" class="review-avatar">
+          <div><div class="review-name">David R.</div><div class="review-biz">El Camino Queens</div></div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"The best part is I didn't have to deal with the tech stuff. I sent over some photos, and they handled everything else perfectly in under a week."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Kevin" class="review-avatar">
+          <div><div class="review-name">Kevin M.</div><div class="review-biz">KM Real Estate</div></div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Our old site was embarrassing to send to clients. The new site looks like a million bucks and we are already ranking higher for local searches."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Maria" class="review-avatar">
+          <div><div class="review-name">Maria L.</div><div class="review-biz">Sweet Bites Bakery</div></div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"They added an online ordering form that has completely streamlined our mornings. The investment paid for itself in literally two weeks."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="John" class="review-avatar">
+          <div><div class="review-name">John C.</div><div class="review-biz">City Electricians</div></div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"No BS, just good work. They didn't try to upsell me on stuff I didn't need. The site is fast and the floating call button gets my phone ringing daily."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Lisa" class="review-avatar">
+          <div><div class="review-name">Lisa K.</div><div class="review-biz">Brooklyn Fit Studio</div></div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"The integration with our class booking software was seamless. KP Digital was super responsive and made the whole process completely stress-free."</p>
+      </div>
     </div>
   </div>
 </section>
@@ -259,6 +425,28 @@
         <li>✓ Unlimited Revisions</li>
       </ul>
       <a href="#contact" class="plan-btn">Choose Pro</a>
+    </div>
+  </div>
+  <div class="guarantee">
+    <strong>🛡️ 100% Satisfaction Guarantee:</strong> We don't ask for final payment until you absolutely love the design.
+  </div>
+</section>
+
+<section id="faq">
+  <h2 class="section-title">Common Questions</h2>
+  <p class="section-sub">Everything you need to know before we start.</p>
+  <div class="faq-list">
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Do I own the website once it's built? <span>+</span></div>
+      <div class="faq-a">Yes, absolutely. Once the final payment is made, you own 100% of the website, the design, and all its content. We don't hold your site hostage.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Are there any hidden monthly fees? <span>+</span></div>
+      <div class="faq-a">No. The prices you see above are one-time fees for the design and build. You will only need to pay for your own hosting and domain name (usually around $10-$20/month depending on the provider). We can also manage hosting for you if you prefer!</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">What if I need changes after it goes live? <span>+</span></div>
+      <div class="faq-a">We include unlimited revisions *during* the build process. After launch, we offer affordable maintenance plans if you want us to handle ongoing updates, or we can train you to make simple text/image swaps yourself.</div>
     </div>
   </div>
 </section>
