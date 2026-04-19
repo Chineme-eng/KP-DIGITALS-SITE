@@ -161,7 +161,23 @@
   .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent); }
   .contact-form textarea { min-height: 150px; resize: vertical; }
 
-  /* FOOTER */
+  /* FAQ SECTION */
+  #faq { background: var(--light); }
+  .faq-wrapper { max-width: 800px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:first-child { border-top: 1px solid var(--border); }
+  .faq-btn { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; background: none; border: none; text-align: left; cursor: pointer; font-family: var(--sans); font-size: 1.1rem; font-weight: 500; color: var(--black); transition: color 0.2s; }
+  .faq-btn:hover { color: var(--accent); }
+  
+  /* The plus/x icon and its rotation */
+  .faq-icon { font-size: 1.8rem; font-weight: 300; line-height: 1; transition: transform 0.3s ease; color: var(--accent); }
+  .faq-item.active .faq-icon { transform: rotate(45deg); color: var(--black); }
+  
+  /* The smooth slide down */
+  .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .faq-content p { padding-bottom: 1.5rem; color: var(--gray); font-size: 0.95rem; line-height: 1.7; font-weight: 300; }
+ 
+ /* FOOTER */
   footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.05); padding: 4rem 2rem; color: rgba(255,255,255,0.5); font-size: 0.9rem; text-align: center; }
   footer .logo { color: var(--white); display: block; margin-bottom: 1rem; font-size: 1.5rem; }
 
@@ -556,6 +572,65 @@
   </div>
 </section>
 
+<section id="faq">
+  <div class="container">
+    <h2 class="section-title" style="text-align: center;">Common Questions</h2>
+    <p class="section-sub" style="text-align: center; margin: 0 auto 3rem auto;">Everything you need to know about our process and pricing.</p>
+    
+    <div class="faq-wrapper">
+      <div class="faq-item">
+        <button class="faq-btn">
+          <span>Do I own my website after it's built?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-content">
+          <p>Yes, 100%. Once your final payment is made, you have total ownership of your website, design, content, and domain. We don't lock you into any proprietary platforms or hold your assets hostage.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn">
+          <span>How long does it take to launch my website?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-content">
+          <p>Our standard turnaround time is 5–7 business days for the Starter and Growth packages. For the Pro tier or sites requiring advanced e-commerce integrations, we typically launch within 10–14 days.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn">
+          <span>Are there any hidden fees or mandatory monthly costs?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-content">
+          <p>Absolutely not. Our package prices are strictly one-time fees. We do offer optional managed hosting for $25/month, but you are completely free to host the site anywhere you prefer. No surprises, ever.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn">
+          <span>What if I need to update my website later?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-content">
+          <p>We build our sites to be incredibly user-friendly so you can make simple text and image updates yourself. If you'd rather not touch it, we offer content updates at a fair hourly rate, or as part of our monthly SEO package.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn">
+          <span>Do I need to provide all the images and text?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-content">
+          <p>We highly recommend providing your own photos and text for the most authentic feel. However, if you get stuck, we can source high-quality, royalty-free professional stock images for you and provide basic copywriting assistance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
 <section id="contact">
   <div class="container contact-grid">
     <div>
@@ -596,5 +671,26 @@
   <p>© 2026 KP Digital. Built in NYC. All rights reserved.</p>
 </footer>
 
+<script>
+  document.querySelectorAll('.faq-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const faqItem = button.parentElement;
+      const content = button.nextElementSibling;
+      const isOpen = faqItem.classList.contains('active');
+
+      // Close all other FAQs
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+        item.querySelector('.faq-content').style.maxHeight = null;
+      });
+
+      // Open the clicked one if it wasn't already open
+      if (!isOpen) {
+        faqItem.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  });
+</script>
 </body>
 </html>
