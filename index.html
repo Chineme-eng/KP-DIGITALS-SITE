@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KP Digital — Affordable Websites for NYC Small Businesses</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -16,6 +16,7 @@
     --accent-light: #e8f4ef;
     --accent-mid: #2d9166;
     --border: rgba(0,0,0,0.10);
+    --gold: #f59e0b;
     --serif: 'Fraunces', Georgia, serif;
     --sans: 'DM Sans', sans-serif;
   }
@@ -42,69 +43,86 @@
   /* HERO */
   #hero { padding-top: 10rem; padding-bottom: 6rem; }
   .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .hero-label { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-light); color: var(--accent); font-size: 0.78rem; font-weight: 500; padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .hero-label { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-light); color: var(--accent); font-size: 0.78rem; font-weight: 700; padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 0.04em; }
   .hero-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-mid); display: inline-block; }
   h1 { font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
   h1 em { font-style: italic; color: var(--accent); }
   .hero-sub { font-size: 1.1rem; color: var(--gray); max-width: 480px; margin-bottom: 2.5rem; font-weight: 300; }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary { background: var(--black); color: var(--white); padding: 0.85rem 2rem; border-radius: 100px; font-weight: 500; text-decoration: none; transition: background 0.2s; }
-  .btn-primary:hover { background: var(--accent); }
-  .btn-secondary { color: var(--black); padding: 0.85rem 2rem; border-radius: 100px; border: 1px solid var(--border); text-decoration: none; transition: border-color 0.2s; }
-  .btn-secondary:hover { border-color: var(--black); }
+  .btn-primary { background: var(--black); color: var(--white); padding: 0.85rem 2rem; border-radius: 100px; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.2s; display: inline-block; }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+  .btn-secondary { color: var(--black); padding: 0.85rem 2rem; border-radius: 100px; border: 1px solid var(--border); text-decoration: none; transition: border-color 0.2s, transform 0.2s; display: inline-block; }
+  .btn-secondary:hover { border-color: var(--black); transform: translateY(-2px); }
   .hero-image-wrapper { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.08); aspect-ratio: 4/3; }
   .hero-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
   /* RECENT LAUNCHES */
   #launches { background: var(--light); }
-  .launches-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
-  .launch-card { background: var(--white); border-radius: 16px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.3s ease; }
-  .launch-card:hover { transform: translateY(-5px); }
-  .launch-img { height: 220px; background-size: cover; background-position: top; border-bottom: 1px solid var(--border); }
-  .launch-info { padding: 1.5rem; }
-  .launch-tag { font-size: 0.7rem; text-transform: uppercase; color: var(--accent); font-weight: 600; letter-spacing: 0.05em; margin-bottom: 0.5rem; display: block; }
-  .launch-info h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; color: var(--black); }
+  .launches-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2.5rem; }
+  .launch-card { background: var(--white); border-radius: 16px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .launch-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+  .launch-img { height: 240px; width: 100%; background-size: cover; background-position: center; border-bottom: 1px solid var(--border); transition: transform 0.5s ease; }
+  .launch-card:hover .launch-img { transform: scale(1.05); }
+  .launch-img-wrapper { overflow: hidden; }
+  .launch-info { padding: 1.5rem; position: relative; background: var(--white); z-index: 2; }
+  .launch-tag { font-size: 0.7rem; text-transform: uppercase; color: var(--accent); font-weight: 700; letter-spacing: 0.05em; margin-bottom: 0.5rem; display: block; }
+  .launch-info h3 { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; color: var(--black); }
 
-  /* SERVICES */
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-  .service-card { border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: border-color 0.2s, transform 0.2s; }
-  .service-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .service-tag { font-size: 0.75rem; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
-  .service-card h3 { font-family: var(--serif); font-size: 1.35rem; font-weight: 300; margin-bottom: 0.75rem; }
-  .service-card p { font-size: 0.875rem; color: var(--gray); line-height: 1.65; margin-bottom: 1.25rem; font-weight: 300; }
-  .service-price { font-family: var(--serif); font-size: 1.5rem; font-weight: 300; color: var(--black); }
-  .service-price span { font-family: var(--sans); font-size: 0.8rem; color: var(--gray); font-weight: 400; }
+  /* SERVICES & PRICING */
+  #services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+  .service-card { background: var(--white); border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative; display: flex; flex-direction: column; }
+  .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+  .service-card.popular { border: 2px solid var(--accent); background: var(--accent-light); transform: scale(1.02); box-shadow: 0 15px 35px rgba(26, 107, 74, 0.1); }
+  .service-card.popular:hover { transform: scale(1.02) translateY(-5px); }
+  .popular-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: var(--white); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.4rem 1.2rem; border-radius: 100px; }
+  
+  .service-card h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 300; margin-bottom: 0.5rem; }
+  .service-desc { font-size: 0.9rem; color: var(--gray); margin-bottom: 1.5rem; min-height: 45px; }
+  .service-price { font-family: var(--serif); font-size: 3rem; font-weight: 300; color: var(--black); margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+  .service-price span { font-family: var(--sans); font-size: 0.9rem; color: var(--gray); font-weight: 400; }
+  
+  .feature-list { list-style: none; margin-bottom: 2.5rem; flex-grow: 1; }
+  .feature-list li { font-size: 0.9rem; color: var(--black); margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 0.75rem; }
+  .feature-list li::before { content: '✓'; color: var(--accent); font-weight: 700; font-size: 1.1rem; line-height: 1.2; }
+  .service-card .btn-primary, .service-card .btn-secondary { text-align: center; width: 100%; display: block; }
+
+  /* ADD-ONS */
+  .addons-container { background: var(--light); border-radius: 24px; padding: 3rem; border: 1px solid var(--border); }
+  .addons-header { text-align: center; margin-bottom: 2.5rem; }
+  .addons-header h3 { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; margin-bottom: 0.5rem; }
+  .addons-header p { color: var(--gray); font-size: 0.95rem; }
+  .addons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .addon-item { background: var(--white); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border); }
+  .addon-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; display: flex; justify-content: space-between; align-items: center; }
+  .addon-price { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
+  .addon-item p { font-size: 0.85rem; color: var(--gray); line-height: 1.5; }
 
   /* TESTIMONIALS CAROUSEL */
-  #testimonials { background: var(--black); color: var(--white); overflow: hidden; padding: 6rem 0; position: relative; }
-  #testimonials h2 { text-align: center; color: var(--white); margin-bottom: 3rem; }
+  #testimonials { background: var(--black); color: var(--white); overflow: hidden; padding: 7rem 0; position: relative; }
+  #testimonials h2 { text-align: center; color: var(--white); margin-bottom: 1rem; }
+  #testimonials .section-sub { text-align: center; margin: 0 auto 4rem auto; color: rgba(255,255,255,0.6); }
   .carousel-wrapper { width: 100%; overflow: hidden; white-space: nowrap; position: relative; }
-  /* Fade edges for smooth visual loop */
-  .carousel-wrapper::before, .carousel-wrapper::after { content: ''; position: absolute; top: 0; width: 100px; height: 100%; z-index: 2; pointer-events: none; }
+  .carousel-wrapper::before, .carousel-wrapper::after { content: ''; position: absolute; top: 0; width: 150px; height: 100%; z-index: 2; pointer-events: none; }
   .carousel-wrapper::before { left: 0; background: linear-gradient(to right, var(--black) 0%, transparent 100%); }
   .carousel-wrapper::after { right: 0; background: linear-gradient(to left, var(--black) 0%, transparent 100%); }
   
-  .carousel-track { display: inline-block; animation: scroll 50s linear infinite; }
+  .carousel-track { display: inline-block; animation: scroll 45s linear infinite; }
   .carousel-track:hover { animation-play-state: paused; }
   
-  .testimonial-card { display: inline-block; white-space: normal; vertical-align: top; width: 340px; background: #1a1a18; padding: 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); margin: 0 1rem; }
-  .quote-icon { color: var(--accent-mid); font-family: var(--serif); font-size: 3rem; line-height: 0; margin-top: 1rem; margin-bottom: 1.5rem; }
-  .testimonial-text { font-size: 0.95rem; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; font-weight: 300; line-height: 1.6; }
-  .client-name { font-weight: 500; font-size: 0.95rem; color: var(--white); }
-  .client-biz { font-size: 0.8rem; color: var(--accent-mid); }
+  .testimonial-card { display: inline-block; white-space: normal; vertical-align: top; width: 380px; background: #181816; padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); margin: 0 1rem; }
+  .testimonial-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+  .client-avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.1); }
+  .client-info { display: flex; flex-direction: column; }
+  .stars { color: var(--gold); font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 0.2rem; }
+  .client-name { font-weight: 600; font-size: 1rem; color: var(--white); }
+  .client-biz { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+  .testimonial-text { font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 1.7; font-weight: 300; }
 
   @keyframes scroll { 
     0% { transform: translateX(0); } 
     100% { transform: translateX(-50%); } 
   }
-
-  /* PROCESS */
-  #process { background: var(--white); }
-  .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
-  .step { padding: 1.5rem; border: 1px solid var(--border); border-radius: 16px; }
-  .step-num { font-family: var(--serif); font-size: 2.5rem; font-weight: 300; color: var(--accent-light); margin-bottom: 1rem; line-height: 1; }
-  .step h3 { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem; }
-  .step p { font-size: 0.875rem; color: var(--gray); font-weight: 300; }
 
   /* WHATSAPP FLOAT */
   .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 1000; transition: transform 0.3s; }
@@ -112,22 +130,27 @@
   .whatsapp-float svg { width: 32px; height: 32px; fill: currentColor; }
 
   /* CONTACT */
-  #contact { background: var(--light); }
+  #contact { background: var(--white); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
-  .contact-option { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--white); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 1rem; text-decoration: none; color: var(--black); transition: border-color 0.2s; }
-  .contact-option:hover { border-color: var(--accent); }
-  .contact-icon { font-size: 1.5rem; }
-  .contact-form input, .contact-form textarea { width: 100%; background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-bottom: 1rem; font-family: var(--sans); }
-  .contact-form textarea { min-height: 120px; resize: vertical; }
+  .contact-option { display: flex; align-items: center; gap: 1.2rem; padding: 1.5rem; background: var(--light); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 1rem; text-decoration: none; color: var(--black); transition: all 0.2s; }
+  .contact-option:hover { border-color: var(--accent); background: var(--white); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+  .contact-icon { font-size: 1.8rem; }
+  .contact-form { background: var(--light); padding: 3rem; border-radius: 24px; border: 1px solid var(--border); }
+  .contact-form input, .contact-form textarea { width: 100%; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem; font-family: var(--sans); font-size: 0.95rem; transition: border-color 0.2s; }
+  .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent); }
+  .contact-form textarea { min-height: 150px; resize: vertical; }
 
   /* FOOTER */
-  footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.05); padding: 3rem 2rem; color: rgba(255,255,255,0.5); font-size: 0.85rem; text-align: center; }
-  footer .logo { color: var(--white); display: block; margin-bottom: 1rem; }
+  footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.05); padding: 4rem 2rem; color: rgba(255,255,255,0.5); font-size: 0.9rem; text-align: center; }
+  footer .logo { color: var(--white); display: block; margin-bottom: 1rem; font-size: 1.5rem; }
 
   @media (max-width: 900px) {
     .hero-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
     .hero-image-wrapper { order: -1; }
     .nav-links { display: none; }
+    .services-grid { gap: 3rem; }
+    .service-card.popular { transform: none; }
+    .service-card.popular:hover { transform: translateY(-5px); }
   }
 </style>
 </head>
@@ -137,7 +160,7 @@
   <div class="nav-inner">
     <a href="#" class="logo">KP<span>.</span>Digital</a>
     <div class="nav-links">
-      <a href="#launches">Work</a>
+      <a href="#launches">Recent Work</a>
       <a href="#services">Pricing</a>
       <a href="#testimonials">Reviews</a>
       <a href="#contact" class="nav-cta">Get a Quote</a>
@@ -152,16 +175,16 @@
 <section id="hero">
   <div class="container hero-grid">
     <div>
-      <div class="hero-label">Queens, NYC — Serving all 5 boroughs</div>
+      <div class="hero-label">NYC's Trusted Web Partner</div>
       <h1>Your business deserves a website that <em>actually works</em></h1>
-      <p class="hero-sub">We build clean, professional websites for NYC small businesses — without the agency price tag. Fast turnaround, no tech headaches.</p>
+      <p class="hero-sub">We build modern, high-converting websites for small businesses—without the insane agency price tag. Fast delivery, no tech headaches.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Get a free quote</a>
-        <a href="#services" class="btn-secondary">See pricing</a>
+        <a href="#services" class="btn-primary">View Pricing</a>
+        <a href="#launches" class="btn-secondary">See Our Work</a>
       </div>
     </div>
     <div class="hero-image-wrapper">
-      <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&q=80" alt="Web Design Workspace">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Professional Web Design Laptop Workspace">
     </div>
   </div>
 </section>
@@ -169,48 +192,60 @@
 <section id="launches">
   <div class="container">
     <h2 class="section-title">Recent Launches</h2>
-    <p class="section-sub">Take a look at some of the local businesses we've recently helped bring online.</p>
+    <p class="section-sub">Take a look at some of the stunning, conversion-focused websites we've recently built for local businesses.</p>
     <div class="launches-grid">
       <div class="launch-card">
-        <div class="launch-img" style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=600')"></div>
+        <div class="launch-img-wrapper">
+          <div class="launch-img" style="background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80')"></div>
+        </div>
         <div class="launch-info">
-          <span class="launch-tag">Restaurant • Astoria</span>
-          <h3>Gino's Trattoria</h3>
+          <span class="launch-tag">Cafe & Bakery • Astoria</span>
+          <h3>The Daily Grind</h3>
         </div>
       </div>
       <div class="launch-card">
-        <div class="launch-img" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=600')"></div>
+        <div class="launch-img-wrapper">
+          <div class="launch-img" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80')"></div>
+        </div>
         <div class="launch-info">
           <span class="launch-tag">Real Estate • Manhattan</span>
-          <h3>Urban Nest Realty</h3>
+          <h3>Urban Nest Properties</h3>
         </div>
       </div>
       <div class="launch-card">
-        <div class="launch-img" style="background-image: url('https://images.unsplash.com/photo-1521503862198-2ae9a997bbc9?auto=format&fit=crop&q=80&w=600')"></div>
+        <div class="launch-img-wrapper">
+          <div class="launch-img" style="background-image: url('https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80')"></div>
+        </div>
         <div class="launch-info">
           <span class="launch-tag">Law Firm • Brooklyn</span>
-          <h3>Harrison & Associates</h3>
+          <h3>Harrison Legal Group</h3>
         </div>
       </div>
       <div class="launch-card">
-        <div class="launch-img" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6958?auto=format&fit=crop&q=80&w=600')"></div>
+        <div class="launch-img-wrapper">
+          <div class="launch-img" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80')"></div>
+        </div>
         <div class="launch-info">
           <span class="launch-tag">Contracting • Queens</span>
-          <h3>Apex Roofing NYC</h3>
+          <h3>Apex Build Co.</h3>
         </div>
       </div>
       <div class="launch-card">
-        <div class="launch-img" style="background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80&w=600')"></div>
+        <div class="launch-img-wrapper">
+          <div class="launch-img" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80')"></div>
+        </div>
         <div class="launch-info">
           <span class="launch-tag">Beauty Salon • Flushing</span>
           <h3>Radiance Studio</h3>
         </div>
       </div>
       <div class="launch-card">
-        <div class="launch-img" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=600')"></div>
+        <div class="launch-img-wrapper">
+          <div class="launch-img" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80')"></div>
+        </div>
         <div class="launch-info">
           <span class="launch-tag">Wellness • Long Island City</span>
-          <h3>Zenith Pilates</h3>
+          <h3>Zenith Yoga Flow</h3>
         </div>
       </div>
     </div>
@@ -219,184 +254,210 @@
 
 <section id="services">
   <div class="container">
-    <h2 class="section-title">Simple, transparent pricing</h2>
-    <p class="section-sub">No hidden fees. No surprise invoices. Pick what you need and we'll get to work.</p>
+    <h2 class="section-title">Clear, Transparent Pricing</h2>
+    <p class="section-sub">Know exactly what you're paying for. No hidden agency fees, no ongoing retainers required unless you want them.</p>
+    
     <div class="services-grid">
       <div class="service-card">
-        <div class="service-tag">Starter</div>
-        <h3>Get online fast</h3>
-        <p>Perfect for businesses that need a clean, professional presence online. Up to 5 pages, mobile-responsive, and basic SEO.</p>
-        <div class="service-price">$599 <span>one-time</span></div>
+        <h3>Starter</h3>
+        <p class="service-desc">The essential online presence. Perfect for new businesses needing a professional look.</p>
+        <div class="service-price">$389 <span>one-time</span></div>
+        <ul class="feature-list">
+          <li>Custom Design (Up to 3 Pages)</li>
+          <li>100% Mobile & Tablet Responsive</li>
+          <li>Basic SEO Setup (Meta tags, Alt text)</li>
+          <li>Contact Form & Lead Capture</li>
+          <li>Google Maps Integration</li>
+          <li>1 Round of Revisions</li>
+        </ul>
+        <a href="#contact" class="btn-secondary">Choose Starter</a>
       </div>
-      <div class="service-card" style="border-color: var(--accent);">
-        <div class="service-tag">Growth</div>
-        <h3>Built to bring in leads</h3>
-        <p>A complete site that ranks on Google and converts. Up to 8 pages, fast loading, blog setup, and Google Business integration.</p>
-        <div class="service-price">$999 <span>one-time</span></div>
+
+      <div class="service-card popular">
+        <div class="popular-badge">Most Popular</div>
+        <h3>Growth</h3>
+        <p class="service-desc">Built to rank on Google and convert visitors into paying customers.</p>
+        <div class="service-price">$469 <span>one-time</span></div>
+        <ul class="feature-list">
+          <li><strong>Everything in Starter, plus:</strong></li>
+          <li>Expanded Site (Up to 6 Pages)</li>
+          <li>Advanced Local SEO Optimization</li>
+          <li>High-Speed Performance Tuning</li>
+          <li>Google Business Profile Setup</li>
+          <li>Social Media Feed Integration</li>
+          <li>2 Rounds of Revisions</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Choose Growth</a>
       </div>
+
       <div class="service-card">
-        <div class="service-tag">Pro</div>
-        <h3>Full-featured & custom</h3>
-        <p>For businesses that need more — online booking, e-commerce, or a fully custom design tailored to your specific brand.</p>
-        <div class="service-price">$1,499 <span>one-time</span></div>
+        <h3>Pro</h3>
+        <p class="service-desc">The complete digital powerhouse with advanced functionality.</p>
+        <div class="service-price">$799 <span>one-time</span></div>
+        <ul class="feature-list">
+          <li><strong>Everything in Growth, plus:</strong></li>
+          <li>Comprehensive Site (Up to 10 Pages)</li>
+          <li>E-commerce or Booking Integration</li>
+          <li>Custom Premium Animations</li>
+          <li>Professional Copywriting Assistance</li>
+          <li>Priority 24-Hour Support</li>
+          <li>Unlimited Revisions prior to launch</li>
+        </ul>
+        <a href="#contact" class="btn-secondary">Choose Pro</a>
+      </div>
+    </div>
+
+    <div class="addons-container">
+      <div class="addons-header">
+        <h3>Optional Add-ons & Services</h3>
+        <p>Enhance your site or let us handle the ongoing maintenance.</p>
+      </div>
+      <div class="addons-grid">
+        <div class="addon-item">
+          <h4>Managed Hosting <span class="addon-price">$25/mo</span></h4>
+          <p>We handle the servers. Includes an SSL certificate, daily backups, and security monitoring so your site never goes down.</p>
+        </div>
+        <div class="addon-item">
+          <h4>Extra Pages <span class="addon-price">$50/ea</span></h4>
+          <p>Need more than your package allows? Add dedicated service pages, team member bios, or extensive portfolios.</p>
+        </div>
+        <div class="addon-item">
+          <h4>Logo Design <span class="addon-price">$150</span></h4>
+          <p>Start fresh with a modern, high-resolution vector logo tailored to your industry and brand identity.</p>
+        </div>
+        <div class="addon-item">
+          <h4>Monthly SEO Boost <span class="addon-price">$99/mo</span></h4>
+          <p>Ongoing keyword tracking, content updates, and local directory listings to keep you at the top of Google.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <section id="testimonials">
-  <h2 class="section-title">What Our Clients Say</h2>
+  <h2 class="section-title">Trusted by Local Owners</h2>
+  <p class="section-sub">Don't just take our word for it. Here's what real business owners have to say.</p>
+  
   <div class="carousel-wrapper">
     <div class="carousel-track">
       <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">I was quoted $4,000 by an agency in Manhattan. KP Digital did it for a fraction of the cost, and the site looks incredible. My restaurant reservations went up immediately.</p>
-        <p class="client-name">Marco T.</p>
-        <p class="client-biz">Restaurant Owner</p>
+        <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80" alt="Marco T." class="client-avatar">
+          <div class="client-info">
+            <div class="stars">★★★★★</div>
+            <div class="client-name">Marco T.</div>
+            <div class="client-biz">Restaurant Owner</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"I was quoted $4,000 by an agency in Manhattan. KP Digital did it for a fraction of the cost, and the site looks incredible. My restaurant reservations went up immediately."</p>
       </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">They had my plumbing business website up and running in 5 days. It's clean, fast, and exactly what I needed to show up on Google local searches.</p>
-        <p class="client-name">David S.</p>
-        <p class="client-biz">Plumbing Contractor</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">As a new salon owner, I didn't have a lot of time to deal with tech stuff. They handled everything from the domain to the booking system integration.</p>
-        <p class="client-name">Elena R.</p>
-        <p class="client-biz">Salon Director</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">Finally, a web developer who actually answers the phone and speaks plain English. No jargon, just results. Highly recommended for any Queens business.</p>
-        <p class="client-name">James K.</p>
-        <p class="client-biz">Accounting Firm</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">The mobile version of our site is flawless. Most of our clients look for us on their phones, and the new design has definitely increased our call volume.</p>
-        <p class="client-name">Sarah L.</p>
-        <p class="client-biz">Fitness Studio</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">Our old website looked like it was from 2005. The redesign was completely painless. They took my rough ideas and made them look entirely professional.</p>
-        <p class="client-name">Michael P.</p>
-        <p class="client-biz">Real Estate Agent</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">I appreciate the transparent pricing. No surprises on the final invoice. They even showed me how to update the gallery photos myself!</p>
-        <p class="client-name">Jennifer W.</p>
-        <p class="client-biz">Event Planner</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">Excellent service from start to finish. They understood exactly what my law practice needed to convey trust and authority online.</p>
-        <p class="client-name">Robert H.</p>
-        <p class="client-biz">Attorney</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">I've tried DIY website builders before and always gave up. Having KP Digital just do it for me was the best decision I made this year.</p>
-        <p class="client-name">Amanda C.</p>
-        <p class="client-biz">Consultant</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">They know the NYC market. They optimized my site for local keywords, and I've noticed a significant uptick in inquiries from my neighborhood.</p>
-        <p class="client-name">Thomas B.</p>
-        <p class="client-biz">HVAC Services</p>
-      </div>
-      
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">I was quoted $4,000 by an agency in Manhattan. KP Digital did it for a fraction of the cost, and the site looks incredible. My restaurant reservations went up immediately.</p>
-        <p class="client-name">Marco T.</p>
-        <p class="client-biz">Restaurant Owner</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">They had my plumbing business website up and running in 5 days. It's clean, fast, and exactly what I needed to show up on Google local searches.</p>
-        <p class="client-name">David S.</p>
-        <p class="client-biz">Plumbing Contractor</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">As a new salon owner, I didn't have a lot of time to deal with tech stuff. They handled everything from the domain to the booking system integration.</p>
-        <p class="client-name">Elena R.</p>
-        <p class="client-biz">Salon Director</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">Finally, a web developer who actually answers the phone and speaks plain English. No jargon, just results. Highly recommended for any Queens business.</p>
-        <p class="client-name">James K.</p>
-        <p class="client-biz">Accounting Firm</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">The mobile version of our site is flawless. Most of our clients look for us on their phones, and the new design has definitely increased our call volume.</p>
-        <p class="client-name">Sarah L.</p>
-        <p class="client-biz">Fitness Studio</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">Our old website looked like it was from 2005. The redesign was completely painless. They took my rough ideas and made them look entirely professional.</p>
-        <p class="client-name">Michael P.</p>
-        <p class="client-biz">Real Estate Agent</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">I appreciate the transparent pricing. No surprises on the final invoice. They even showed me how to update the gallery photos myself!</p>
-        <p class="client-name">Jennifer W.</p>
-        <p class="client-biz">Event Planner</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">Excellent service from start to finish. They understood exactly what my law practice needed to convey trust and authority online.</p>
-        <p class="client-name">Robert H.</p>
-        <p class="client-biz">Attorney</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">I've tried DIY website builders before and always gave up. Having KP Digital just do it for me was the best decision I made this year.</p>
-        <p class="client-name">Amanda C.</p>
-        <p class="client-biz">Consultant</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">They know the NYC market. They optimized my site for local keywords, and I've noticed a significant uptick in inquiries from my neighborhood.</p>
-        <p class="client-name">Thomas B.</p>
-        <p class="client-biz">HVAC Services</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="process">
-  <div class="container">
-    <h2 class="section-title">How it works</h2>
-    <p class="section-sub">Four simple steps from first call to live website. No tech knowledge needed.</p>
-    <div class="process-steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h3>Discovery call</h3>
-        <p>A quick 20-minute chat to understand your business and goals.</p>
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Elena R." class="client-avatar">
+          <div class="client-info">
+            <div class="stars">★★★★★</div>
+            <div class="client-name">Elena R.</div>
+            <div class="client-biz">Salon Director</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"As a new salon owner, I didn't have time to deal with tech stuff. They handled everything from the domain to the booking system. My clients love how easy it is to schedule online."</p>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h3>Design & build</h3>
-        <p>We develop your site. You'll see a working preview in days.</p>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&q=80" alt="David S." class="client-avatar">
+          <div class="client-info">
+            <div class="stars">★★★★★</div>
+            <div class="client-name">David S.</div>
+            <div class="client-biz">Plumbing Contractor</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"They had my business website up and running in 5 days. It's clean, incredibly fast, and exactly what I needed to start showing up on Google local searches."</p>
       </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h3>Review & refine</h3>
-        <p>You give feedback, and we polish the details until it's perfect.</p>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=100&q=80" alt="Sarah L." class="client-avatar">
+          <div class="client-info">
+            <div class="stars">★★★★★</div>
+            <div class="client-name">Sarah L.</div>
+            <div class="client-biz">Fitness Studio</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"The mobile version of our site is flawless. 80% of our clients look for us on their phones, and the new layout has definitely increased our daily call volume."</p>
       </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <h3>Go live</h3>
-        <p>We launch the site, handle the tech, and you share it with the world.</p>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="James K." class="client-avatar">
+          <div class="client-info">
+            <div class="stars">★★★★★</div>
+            <div class="client-name">James K.</div>
+            <div class="client-biz">Accounting Firm</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"Finally, a web developer who actually answers the phone and speaks plain English. No jargon, just results. Highly recommended for any Queens business."</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80" alt="Marco T." class="client-avatar">
+          <div class="client-info">
+            <div class="stars">★★★★★</div>
+            <div class="client-name">Marco T.</div>
+            <div class="client-biz">Restaurant Owner</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"I was quoted $4,000 by an agency in Manhattan. KP Digital did it for a fraction of the cost, and the site looks incredible. My restaurant reservations went up immediately."</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Elena R." class="client-avatar">
+          <div class="client-info">
+            <div class="stars">★★★★★</div>
+            <div class="client-name">Elena R.</div>
+            <div class="client-biz">Salon Director</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"As a new salon owner, I didn't have time to deal with tech stuff. They handled everything from the domain to the booking system. My clients love how easy it is to schedule online."</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&q=80" alt="David S." class="client-avatar">
+          <div class="client-info">
+            <div class="stars">★★★★★</div>
+            <div class="client-name">David S.</div>
+            <div class="client-biz">Plumbing Contractor</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"They had my business website up and running in 5 days. It's clean, incredibly fast, and exactly what I needed to start showing up on Google local searches."</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=100&q=80" alt="Sarah L." class="client-avatar">
+          <div class="client-info">
+            <div class="stars">★★★★★</div>
+            <div class="client-name">Sarah L.</div>
+            <div class="client-biz">Fitness Studio</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"The mobile version of our site is flawless. 80% of our clients look for us on their phones, and the new layout has definitely increased our daily call volume."</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="James K." class="client-avatar">
+          <div class="client-info">
+            <div class="stars">★★★★★</div>
+            <div class="client-name">James K.</div>
+            <div class="client-biz">Accounting Firm</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"Finally, a web developer who actually answers the phone and speaks plain English. No jargon, just results. Highly recommended for any Queens business."</p>
       </div>
     </div>
   </div>
@@ -405,32 +466,33 @@
 <section id="contact">
   <div class="container contact-grid">
     <div>
-      <h2 class="section-title">Let's get your business online</h2>
-      <p class="section-sub" style="margin-bottom: 2rem;">Reach out however works best for you. We respond within a few hours during business days.</p>
+      <h2 class="section-title">Ready to Grow?</h2>
+      <p class="section-sub" style="margin-bottom: 2.5rem;">Let's build a website that brings in more customers. Reach out for a free, no-pressure consultation.</p>
       
       <a href="tel:+19295550123" class="contact-option">
         <span class="contact-icon">📞</span>
         <div>
-          <strong>(929) 555-0123</strong>
-          <div style="font-size: 0.85rem; color: var(--gray);">Call or text anytime</div>
+          <strong style="font-size: 1.1rem; display: block; margin-bottom: 0.2rem;">(929) 555-0123</strong>
+          <div style="font-size: 0.85rem; color: var(--gray);">Call or text us anytime</div>
         </div>
       </a>
       <a href="mailto:hello@kpdigital.co" class="contact-option">
         <span class="contact-icon">✉️</span>
         <div>
-          <strong>hello@kpdigital.co</strong>
-          <div style="font-size: 0.85rem; color: var(--gray);">Send us an email</div>
+          <strong style="font-size: 1.1rem; display: block; margin-bottom: 0.2rem;">hello@kpdigital.co</strong>
+          <div style="font-size: 0.85rem; color: var(--gray);">We respond within 24 hours</div>
         </div>
       </a>
     </div>
     
     <div>
       <div class="contact-form">
+        <h3 style="font-family: var(--serif); font-size: 1.5rem; margin-bottom: 1.5rem; font-weight: 400;">Send us a message</h3>
         <input type="text" placeholder="Your Name">
         <input type="email" placeholder="Email Address">
         <input type="text" placeholder="Business Name">
-        <textarea placeholder="Tell us about your project..."></textarea>
-        <button class="btn-primary" style="width: 100%; cursor: pointer; border: none; font-size: 1rem;">Send Message</button>
+        <textarea placeholder="Tell us a little about your project and what you're looking for..."></textarea>
+        <button class="btn-primary" style="width: 100%; cursor: pointer; border: none; font-size: 1.05rem; padding: 1rem;">Get My Free Quote</button>
       </div>
     </div>
   </div>
@@ -438,7 +500,7 @@
 
 <footer>
   <a href="#" class="logo">KP<span>.</span>Digital</a>
-  <p>© 2026 KP Digital. Built in Queens, NY. All rights reserved.</p>
+  <p>© 2026 KP Digital. Built in NYC. All rights reserved.</p>
 </footer>
 
 </body>
